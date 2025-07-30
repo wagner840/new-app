@@ -1,0 +1,62 @@
+{
+  "name": "daily-affirmations-app",
+  "version": "1.0.0",
+  "description": "Uma aplicação web moderna que oferece afirmações diárias para promover bem-estar mental e crescimento pessoal",
+  "main": "index.html",
+  "scripts": {
+    "start": "python -m http.server 3000",
+    "dev": "python -m http.server 3000",
+    "serve": "npx serve . -p 3000",
+    "build": "echo 'No build process needed for vanilla JS app'",
+    "test": "echo 'Tests will be implemented in future versions'",
+    "validate": "node -c src/script.js && node -e \"JSON.parse(require('fs').readFileSync('src/affirmations.json'))\"",
+    "deploy": "vercel --prod"
+  },
+  "keywords": [
+    "affirmations",
+    "wellbeing",
+    "mental-health",
+    "positivity",
+    "mindfulness",
+    "spa",
+    "javascript",
+    "responsive",
+    "monetization",
+    "adterra"
+  ],
+  "author": {
+    "name": "Daily Affirmations Team",
+    "email": "contact@dailyaffirmations.app",
+    "url": "https://github.com/your-username/daily-affirmations-app"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/daily-affirmations-app.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/daily-affirmations-app/issues"
+  },
+  "homepage": "https://daily-affirmations-app.vercel.app",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "devDependencies": {
+    "serve": "^14.2.0",
+    "lighthouse": "^10.4.0",
+    "html-validate": "^8.7.4"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead",
+    "not ie 11"
+  ],
+  "files": [
+    "index.html",
+    "src/",
+    "docs/",
+    "README.md",
+    "LICENSE"
+  ]
+}

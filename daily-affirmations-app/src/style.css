@@ -1,0 +1,433 @@
+/* ===================================
+   DAILY AFFIRMATIONS - RESPONSIVE CSS
+   =================================== */
+
+/* CSS Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Color Palette */
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --text-primary: #2d3748;
+    --text-secondary: #4a5568;
+    --text-light: #718096;
+    --background-main: #f7fafc;
+    --background-card: #ffffff;
+    --accent-color: #667eea;
+    --shadow-soft: 0 10px 25px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.15);
+    
+    /* Typography */
+    --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-size-h1: clamp(2rem, 5vw, 3rem);
+    --font-size-affirmation: clamp(1.25rem, 4vw, 1.75rem);
+    --font-size-subtitle: clamp(0.9rem, 2.5vw, 1.1rem);
+    --font-size-button: clamp(1rem, 2.5vw, 1.125rem);
+    
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-xxl: 4rem;
+    
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-smooth: 0.3s ease;
+    --transition-slow: 0.5s ease;
+}
+
+/* Base Styles */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-primary);
+    background: var(--background-main);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-sm);
+}
+
+/* Main Container */
+.app-container {
+    width: 100%;
+    max-width: 600px;
+    background: var(--background-card);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-soft);
+    padding: var(--spacing-xl);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.app-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--primary-gradient);
+}
+
+.app-container:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* Header Styles */
+.app-header {
+    margin-bottom: var(--spacing-xl);
+}
+
+.app-title {
+    font-size: var(--font-size-h1);
+    font-weight: 600;
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: var(--spacing-sm);
+    letter-spacing: -0.02em;
+}
+
+.app-subtitle {
+    font-size: var(--font-size-subtitle);
+    color: var(--text-light);
+    font-weight: 400;
+    opacity: 0.8;
+}
+
+/* Affirmation Section */
+.affirmation-section {
+    margin-bottom: var(--spacing-xl);
+}
+
+.affirmation-text {
+    font-size: var(--font-size-affirmation);
+    font-weight: 400;
+    color: var(--text-primary);
+    line-height: 1.5;
+    margin-bottom: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    background: linear-gradient(145deg, #f8f9ff, #f0f4ff);
+    border-radius: var(--radius-lg);
+    border-left: 4px solid var(--accent-color);
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    transition: all var(--transition-smooth);
+}
+
+.affirmation-text::before {
+    content: '"';
+    position: absolute;
+    top: var(--spacing-sm);
+    left: var(--spacing-md);
+    font-size: 2rem;
+    color: var(--accent-color);
+    opacity: 0.3;
+    font-family: serif;
+}
+
+.affirmation-text::after {
+    content: '"';
+    position: absolute;
+    bottom: var(--spacing-sm);
+    right: var(--spacing-md);
+    font-size: 2rem;
+    color: var(--accent-color);
+    opacity: 0.3;
+    font-family: serif;
+}
+
+/* Loading State */
+.affirmation-text.loading {
+    opacity: 0.6;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 0.8; }
+}
+
+/* Fade Transition Animation */
+.affirmation-text.fade-out {
+    opacity: 0;
+    transform: translateY(-10px);
+}
+
+.affirmation-text.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+    animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Button Styles */
+.next-btn {
+    background: var(--primary-gradient);
+    color: white;
+    border: none;
+    padding: var(--spacing-md) var(--spacing-xl);
+    font-size: var(--font-size-button);
+    font-weight: 500;
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: all var(--transition-smooth);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    position: relative;
+    overflow: hidden;
+    min-width: 200px;
+    min-height: 48px;
+    font-family: var(--font-primary);
+}
+
+.next-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left var(--transition-smooth);
+}
+
+.next-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.next-btn:hover::before {
+    left: 100%;
+}
+
+.next-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.next-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.3);
+}
+
+/* Disabled Button State */
+.next-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+}
+
+/* Footer Styles */
+.app-footer {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    font-weight: 300;
+    opacity: 0.8;
+}
+
+/* Ad Container Styles (for AdTerra integration) */
+.ad-container {
+    margin: var(--spacing-lg) 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Responsive Design */
+
+/* Mobile Devices (up to 480px) */
+@media (max-width: 480px) {
+    body {
+        padding: var(--spacing-xs);
+    }
+    
+    .app-container {
+        padding: var(--spacing-lg);
+        margin: var(--spacing-sm) 0;
+    }
+    
+    .app-header {
+        margin-bottom: var(--spacing-lg);
+    }
+    
+    .affirmation-text {
+        padding: var(--spacing-md);
+        margin-bottom: var(--spacing-lg);
+        font-size: 1.1rem;
+        min-height: 100px;
+    }
+    
+    .next-btn {
+        width: 100%;
+        padding: var(--spacing-md);
+        font-size: 1rem;
+    }
+    
+    .affirmation-section {
+        margin-bottom: var(--spacing-lg);
+    }
+}
+
+/* Tablet Devices (481px to 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .app-container {
+        padding: var(--spacing-xl);
+        max-width: 500px;
+    }
+    
+    .affirmation-text {
+        font-size: 1.3rem;
+        padding: var(--spacing-lg);
+    }
+    
+    .next-btn {
+        min-width: 220px;
+    }
+}
+
+/* Desktop Devices (769px and up) */
+@media (min-width: 769px) {
+    .app-container {
+        max-width: 600px;
+    }
+    
+    .affirmation-text {
+        font-size: var(--font-size-affirmation);
+        padding: var(--spacing-xl);
+    }
+    
+    /* Hover effects for desktop */
+    .affirmation-text:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* Large Desktop (1200px and up) */
+@media (min-width: 1200px) {
+    .app-container {
+        max-width: 700px;
+        padding: var(--spacing-xxl);
+    }
+}
+
+/* High Contrast Mode Support */
+@media (prefers-contrast: high) {
+    :root {
+        --text-primary: #000000;
+        --text-secondary: #333333;
+        --background-card: #ffffff;
+        --accent-color: #0066cc;
+    }
+    
+    .affirmation-text {
+        border-left-width: 6px;
+    }
+    
+    .next-btn {
+        background: #0066cc;
+        border: 2px solid #004499;
+    }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    
+    .app-container {
+        transform: none !important;
+    }
+    
+    .next-btn {
+        transform: none !important;
+    }
+    
+    .affirmation-text {
+        transform: none !important;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-primary: #e2e8f0;
+        --text-secondary: #cbd5e0;
+        --text-light: #a0aec0;
+        --background-main: #1a202c;
+        --background-card: #2d3748;
+        --shadow-soft: 0 10px 25px rgba(0, 0, 0, 0.3);
+        --shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.4);
+    }
+    
+    .affirmation-text {
+        background: linear-gradient(145deg, #374151, #4b5563);
+        color: var(--text-primary);
+    }
+    
+    .app-container {
+        background: var(--background-card);
+    }
+}
+
+/* Print Styles */
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .app-container {
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+    
+    .next-btn {
+        display: none;
+    }
+    
+    .app-footer {
+        display: none;
+    }
+}
