@@ -106,6 +106,16 @@ npm install -g netlify-cli
 netlify deploy --prod --dir .
 ```
 
+**Coolify (Self-hosted):**
+```bash
+# Configure no dashboard do Coolify:
+Repository: https://github.com/seu-usuario/daily-affirmations-app
+Build Pack: Node.js
+Start Command: npm start
+Port: 3000
+```
+> 📖 **Guia completo:** [docs/COOLIFY-DEPLOY.md](docs/COOLIFY-DEPLOY.md)
+
 ## 🎯 Funcionalidades Detalhadas
 
 ### 📚 Base de Afirmações

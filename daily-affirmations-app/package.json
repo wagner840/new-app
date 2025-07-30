@@ -4,13 +4,14 @@
   "description": "Uma aplicação web moderna que oferece afirmações diárias para promover bem-estar mental e crescimento pessoal",
   "main": "index.html",
   "scripts": {
-    "start": "python -m http.server 3000",
-    "dev": "python -m http.server 3000",
+    "start": "npx serve . -l 3000 -s",
+    "dev": "npx serve . -l 3000 -s",
     "serve": "npx serve . -p 3000",
     "build": "echo 'No build process needed for vanilla JS app'",
     "test": "echo 'Tests will be implemented in future versions'",
     "validate": "node -c src/script.js && node -e \"JSON.parse(require('fs').readFileSync('src/affirmations.json'))\"",
-    "deploy": "vercel --prod"
+    "deploy": "vercel --prod",
+    "docker:start": "npx serve . -l 3000 -s --no-clipboard"
   },
   "keywords": [
     "affirmations",
@@ -41,8 +42,10 @@
   "engines": {
     "node": ">=14.0.0"
   },
+  "dependencies": {
+    "serve": "^14.2.0"
+  },
   "devDependencies": {
-    "serve": "^14.2.0",
     "lighthouse": "^10.4.0",
     "html-validate": "^8.7.4"
   },
